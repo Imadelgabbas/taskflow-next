@@ -6,7 +6,7 @@ export async function addProject(formData: FormData) {
   const name = formData.get('name') as string;
   const color = formData.get('color') as string;
 
-  await fetch('http://localhost:4000/projects', {
+  await fetch('http://localhost:3000/api/projects', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -23,7 +23,7 @@ export async function addProject(formData: FormData) {
 export async function deleteProject(formData: FormData) {
   const id = formData.get('id') as string;
 
-  await fetch(`http://localhost:4000/projects/${id}`, {
+  await fetch(`http://localhost:3000/api/projects/${id}`, {
     method: 'DELETE',
   });
 
@@ -35,7 +35,7 @@ export async function renameProject(formData: FormData) {
   const newName = formData.get('newName') as string;
   const color = formData.get('color') as string;
 
-  await fetch(`http://localhost:4000/projects/${id}`, {
+  await fetch(`http://localhost:3000/api/projects/${id}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
