@@ -1,0 +1,27 @@
+Q1 : React Vite utilise src, main.tsx, App.tsx, react-router-dom. Next.js utilise app, layout.tsx, page.tsx. Le routing dans Next.js se fait avec les dossiers.
+
+Q2 : Pour /login, on crée seulement app/login/page.tsx. Dans React, il faut créer le composant, importer, puis ajouter la route dans App.tsx.
+
+Q3 : En React, on utilise useParams() côté client. En Next.js, params est reçu directement dans les props du composant côté serveur.
+
+Q5 : En React, il faut plusieurs lignes avec useState, useEffect, fetch, loading, error. En Next.js, quelques lignes suffisent avec await fetch().
+
+Q6 : Dans Network du navigateur, on ne voit pas forcément GET /projects, car la requête est faite par le serveur Next.js, pas directement par le navigateur.
+
+Q7 : Login a besoin d’interactivité, donc 'use client'. Dashboard affiche seulement des données, donc Server Component.
+
+Q8 : L’équivalent de useNavigate() est useRouter() de next/navigation.
+
+Q9 : Dans React SPA, le code source contient presque seulement <div id="root"></div> et des scripts.
+
+Q10 : Dans Next.js, le HTML contient déjà les projets, car la page est rendue côté serveur.
+
+Q11 : En React Router, on faisait un Layout avec <Outlet />.
+
+Q12 : On crée : app/dashboard/layout.tsx
+
+Q13 : Non, un Server Component ne peut pas utiliser onClick, car onClick est une interaction côté navigateur.
+
+Q14 : Non, on peut créer seulement un petit composant bouton en Client Component.
+
+Q15 : L’avantage est que l’URL backend :4000 n’est pas exposée directement au navigateur. Le serveur Next.js récupère les données.
