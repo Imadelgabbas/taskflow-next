@@ -1,0 +1,20 @@
+Q1 : Oui, dans Prisma Studio je vois les données dans les tables Project et User. Il y a l’utilisateur admin et les projets initiaux ajoutés avec le seed.
+
+Q2 : Avec Prisma, le code est plus court d’environ 10 à 15 lignes. On n’a plus besoin de fs.readFileSync, JSON.parse, push et writeFileSync.
+
+Q3 : Oui, l’application fonctionne toujours après suppression de db.json, car les données sont maintenant stockées dans SQLite via Prisma, pas dans un fichier JSON.
+
+Q4 : Un Server Component peut appeler Prisma directement car il s’exécute côté serveur. Un Client Component ne peut pas, car il s’exécute dans le navigateur et ne doit pas accéder directement à la base de données.
+
+Q5 : Zéro requête externe pour la police. Avec next/font, la police est optimisée et servie localement par Next.js.
+
+Q6 : Avec generateStaticParams, les pages /projects/1 et /projects/2 sont générées au moment du build.
+
+Q7 : Oui, par défaut Next.js peut générer une nouvelle page à la demande pour /projects/3, mais elle ne sera pas pré-générée au build comme les anciennes pages.
+
+Q8 : Mon application est déployée sur Vercel. L’URL est :
+https://taskflow-next-beta.vercel.app
+Le login, la navigation et l’affichage de l’application fonctionnent. Pour SQLite, le build et la preview suffisent pour le TP.
+
+
+Q10 : Je choisirais Next.js full-stack, car il permet d’avoir le frontend, le backend, les API Routes, les Server Actions, l’authentification et l’accès à la base de données dans un seul projet. C’est plus rapide à développer, plus simple à déployer et meilleur pour la performance et le SEO.
