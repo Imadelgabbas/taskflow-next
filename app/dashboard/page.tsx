@@ -1,22 +1,24 @@
+import { prisma } from '@/lib/prisma';
 import AddProjectForm from './AddProjectForm';
-import { deleteProject, renameProject } from '../actions/projects';
+import { deleteProject } from '../actions/projects';
 
-interface Project {
-  id: string;
-  name: string;
-  color: string;
+export async function generateStaticParams() {
+  const projects = await prisma.project.findMany();
+
+  return projects.map((p) => ({
+    id: String(p.id),
+  }));
 }
 
 export default async function DashboardPage() {
-  const res = await fetch('http://localhost:4000/projects', {
-    cache: 'no-store',
+  const projects = await prisma.project.findMany({
+    orderBy: { createdAt: 'desc' },
   });
-
-  const projects: Project[] = await res.json();
 
   return (
     <div style={{ padding: '2rem' }}>
       <h1>Dashboard</h1>
+      <p>{projects.length} projets</p>
 
       <AddProjectForm />
 
@@ -43,52 +45,9 @@ export default async function DashboardPage() {
 
             <a href={`/projects/${p.id}`}>{p.name}</a>
 
-            <form action={renameProject} style={{ display: 'flex', gap: 4 }}>
-              <input type="hidden" name="id" value={p.id} />
-              <input type="hidden" name="color" value={p.color} />
-
-              <input
-                name="newName"
-                defaultValue={p.name}
-                required
-                style={{
-                  padding: 4,
-                  border: '1px solid #ccc',
-                  borderRadius: 4,
-                }}
-              />
-
-              <button
-                type="submit"
-                style={{
-                  background: '#3498db',
-                  color: 'white',
-                  border: 'none',
-                  padding: '4px 8px',
-                  borderRadius: 4,
-                  cursor: 'pointer',
-                }}
-              >
-                Rename
-              </button>
-            </form>
-
             <form action={deleteProject} style={{ display: 'inline' }}>
               <input type="hidden" name="id" value={p.id} />
-
-              <button
-                type="submit"
-                style={{
-                  background: 'red',
-                  color: 'white',
-                  border: 'none',
-                  padding: '4px 8px',
-                  borderRadius: 4,
-                  cursor: 'pointer',
-                }}
-              >
-                Delete
-              </button>
+              <button type="submit">🗑️</button>
             </form>
           </li>
         ))}
